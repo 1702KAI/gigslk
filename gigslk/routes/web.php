@@ -26,3 +26,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('redirects','App\Http\Controllers\HomeControler@index');
+
+// Route::resource(name:'Jobs', controller:\App\Http\Controllers\JobsController::class);
+Route::resource('jobs', \App\Http\Controllers\JobsController::class);

@@ -5,17 +5,29 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ url('redirects') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
-
-                <!-- Navigation Links -->
+                
+                  <!-- Navigation Links -->
+                
+                @if (Auth::check() && Auth::user()->role_id == 3) 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link href="{{ route('jobs.index') }}" :active="request()->routeIs('jobs.index')">
+                        {{ __('Post a job') }}
                     </x-nav-link>
                 </div>
+                 @endif
+                
+                @if (isset($navLinks) && Auth::check())
+                    <!-- Navigation Links -->
+                    @foreach($navLinks as $navLink)
+                        {!! $navLink['html'] !!}
+                    @endforeach
+                @endif
+
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">

@@ -35,7 +35,9 @@
         <div class="flex-shrink">
             @if (Route::has('login'))
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="text-sm font-semibold text-gray-900 hover:text-gray-700 px-4 py-2">Dashboard</a>
+                    @if (Auth::check() && Auth::user()->role_id == 3) 
+                    <a href="{{ url('redirects') }}" class="text-sm font-semibold text-gray-900 hover:text-gray-700 px-4 py-2">Dashboard</a>
+                    @endif              
                 @else
                     <a href="{{ route('login') }}" class="text-sm font-semibold text-gray-900 hover:text-gray-700 px-4 py-2">Log in</a>
 
