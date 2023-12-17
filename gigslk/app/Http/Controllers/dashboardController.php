@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class HomeControler extends Controller
+class dashboardController extends Controller
 {
     public function index()
 {
@@ -55,7 +55,7 @@ class HomeControler extends Controller
             return [
                 [
                     'html' => '<div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                    <x-nav-link href="' . route('jobs.index') . '" :active="request()->routeIs(\'jobs.index\')">
+                                    <x-nav-link href="' . route('freelancer.job.index') . '" :active="request()->routeIs(\'jobs.index\')">
                                         ' . __('Post a job') . '
                                     </x-nav-link>
                                 </div>',
@@ -73,7 +73,7 @@ class HomeControler extends Controller
             return [
                 [
                     'html' => '<div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                    <x-nav-link href="' . route('jobs.index') . '" :active="request()->routeIs(\'jobs.index\')">
+                                    <x-nav-link href="' . route('employer.job.index') . '" :active="request()->routeIs(\'jobs.index\')">
                                         ' . __('Post a job') . '
                                     </x-nav-link>
                                 </div>',

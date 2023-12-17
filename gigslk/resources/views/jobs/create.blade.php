@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,20 +8,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
 <body>
 
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
                 <h2>Create New Job</h2>
-                <a href="{{ route('jobs.index') }}" class="btn btn-primary mb-3">Back to Job Listings</a>
-
+                <a href="{{ route('employer.job.index') }}" class="btn btn-primary mb-3">Back to Job Listings</a>
                 @if(session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
 
-                <form action="{{ route('jobs.store') }}" method="POST">
+                <form action="{{ route('employer.job.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="title">Job Title:</label>
@@ -31,6 +28,18 @@
                     <div class="form-group">
                         <label for="description">Job Description:</label>
                         <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="skills">Skills Required:</label>
+                        <input type="text" class="form-control" id="skills" name="skills" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Budget:</label>
+                        <input type="number" class="form-control" id="budget" name="budget" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Project Duration (in days):</label>
+                        <input type="number" class="form-control" id="duration" name="duration" required>
                     </div>
                     <!-- Add more input fields as needed -->
 
@@ -51,5 +60,4 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
-
 </html>

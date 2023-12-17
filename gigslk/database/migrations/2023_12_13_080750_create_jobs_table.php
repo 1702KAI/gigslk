@@ -15,6 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->string('skills'); // Added skills field
+            $table->decimal('budget', 10, 2); // Added budget field as decimal with precision 10 and scale 2
+            $table->integer('duration'); // Added duration field as integer
+            $table->foreignId('user_id')->constrained(); // Foreign key to tie Job to User
+            $table->string('user_email'); // User email
+            $table->foreignId('role_id')->constrained(); // Foreign key to tie Job to Role
+            $table->string('status')->default('active'); // Added status field with default value 'active'
             $table->timestamps();
         });
     }

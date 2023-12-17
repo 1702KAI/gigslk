@@ -4,15 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Job; // Make sure to import the Job model
 use Illuminate\Http\Request;
+use Auth;
 
-class JobsController extends Controller
+class jobController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $jobs = Job::all();
+        // Get the authenticated user
+        $user = Auth::user();
+    
+        // Retrieve jobs associated with the authenticated user
+        $jobs = $user->jobs;
+    
         return view('jobs.index', compact('jobs'));
     }
 
@@ -27,18 +33,37 @@ class JobsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+public function store(Request $request)
     {
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
+            'skills' => 'required|string',
+            'budget' => 'required|numeric',
+            'duration' => 'required|integer',
             // Add more validation rules as needed
         ]);
 
-        Job::create($request->all());
+        // Get the authenticated user
+        $user = Auth::user();
+
+        // Create a new job and associate it with the authenticated user
+        $job = $user->jobs()->create([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'skills' => $request->input('skills'),
+            'budget' => $request->input('budget'),
+            'duration' => $request->input('duration'),
+            'user_email' => $user->email,
+            'role_id' => $user->role_id,
+            'user_id' => $user->id, // Add user_id
+            'status' => 'active',
+            // Add more fields as needed
+        ]);
 
         return redirect()->route('jobs.index')->with('success', 'Job listing created successfully');
     }
+
 
     /**
      * Display the specified resource.
@@ -70,6 +95,19 @@ class JobsController extends Controller
         $job->update($request->all());
 
         return redirect()->route('jobs.index')->with('success', 'Job listing updated successfully');
+    }
+
+
+    public function updateStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:active,inactive,in-progress,completed',
+        ]);
+
+        $job = Job::findOrFail($id);
+        $job->update(['status' => $request->input('status')]);
+
+        return redirect()->route('employer.job.show', $job->id)->with('success', 'Job status updated successfully');
     }
 
     /**

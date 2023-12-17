@@ -17,6 +17,14 @@ class Job extends Model
     protected $fillable = [
         'title',
         'description',
+        'skills',
+        'budget',
+        'duration',
+        'user_id',
+        'user_email',
+        'role_id',
+        'status',
+        'total_bids',
         // Add more attributes as needed
     ];
 
@@ -34,8 +42,45 @@ class Job extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function bids()
+    {
+        return $this->hasMany(Bid::class);
+    }
+
+    public function getTotalBidsAttribute()
+    {
+        return $this->bids()->distinct('freelancer_id')->count('freelancer_id');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($job) {
+            // Set the initial value of total_bids when creating a new job
+            $job->total_bids = 0;
+        });
+
+        static::created(function ($job) {
+            // Update total_bids when a new bid is created
+            $job->updateTotalBids();
+        });
+
+        static::deleted(function ($job) {
+            // Update total_bids when a bid is deleted
+            $job->updateTotalBids();
+        });
+    }
+
+    public function updateTotalBids()
+    {
+        $this->total_bids = $this->bids()->distinct('freelancer_id')->count('freelancer_id');
+        $this->save();
+    }
+
 
     // Add more relationships or methods as needed
 }

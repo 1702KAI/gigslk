@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>Edit Job</h2>
-                <a href="{{ route('jobs.index') }}" class="btn btn-primary mb-3">Back to Job Listings</a>
+                <a href="{{ route('employer.job.index') }}" class="btn btn-primary mb-3">Back to Job Listings</a>
 
                 @if(session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
@@ -35,6 +35,21 @@
                         <label for="description">Job Description:</label>
                         <textarea class="form-control" id="description" name="description"
                             rows="4" required>{{ $job->description }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="skills">Skills Required:</label>
+                        <input type="text" class="form-control" id="skills" name="skills"
+                            value="{{ $job->skills }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Budget:</label>
+                        <input type="number" class="form-control" id="budget" name="budget"
+                            value="{{ $job->budget }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Project Duration (in days):</label>
+                        <input type="number" class="form-control" id="duration" name="duration"
+                            value="{{ $job->duration }}" required>
                     </div>
                     <!-- Add more input fields as needed -->
 
