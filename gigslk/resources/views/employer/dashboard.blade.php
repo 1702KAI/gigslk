@@ -59,7 +59,7 @@
                             </div>
                             <div class="relative rounded bg-gray-200 shadow">
                                 <div class="bg-green-500 pl-10 pr-10 pt-8 pb-8 ml-3 absolute top-0 -mt-4 -mr-4 rounded text-white fill-current shadow">
-                                    <i class="fas fa-envelope inline-block w-5"></i>
+                                    <i class='fas fa-hammer'style="font-size:20px"></i>
                                 </div>
                   
                                 <div class="float-right top-0 right-0 m-3">
@@ -70,7 +70,7 @@
                   
                             <div class="relative rounded bg-gray-200 shadow">
                                 <div class="bg-red-500 pl-10 pr-10 pt-8 pb-8 ml-3 absolute top-0 -mt-4 -mr-4 rounded text-white fill-current shadow">
-                                    <i class="fas fa-envelope inline-block w-5"></i>
+                                    <i class="fa fa-gavel" aria-hidden="true" style="font-size:20px"></i>
                                 </div>
                   
                                 <div class="float-right top-0 right-0 m-3">

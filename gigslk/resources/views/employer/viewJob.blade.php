@@ -39,6 +39,10 @@
                             <h5 class="mb-1">{{ optional($bid->freelancer)->name }}</h5>
                             <p class="mb-1">{{ $bid->proposal }}</p>
                             <p > Previously completed this kind of project? {{$bid->portfolio}}</p>
+                            <br>
+                            <a href="" class="btn btn-primary mt-3">Accept</a>
+                            <a href="" class="btn btn-primary mt-3">Decline</a>
+
                         </div>
                     </div>
                 @empty
@@ -47,6 +51,7 @@
 
                 <!-- Add a button to go back to the bid index page -->
                 <a href="{{ route('employer.manageBids') }}" class="btn btn-primary mt-3">Back to Bids</a>
+                <br>
             </div>
         </div>
     </div>

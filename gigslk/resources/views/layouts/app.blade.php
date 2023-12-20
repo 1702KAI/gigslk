@@ -37,6 +37,12 @@
                 {{ $slot }}
             </main>
         </div>
+        <div class="container max-w-screen-xl mx-auto px-4 mt-20 mb-20">
+            <div class="flex flex-col lg:flex-row lg:justify-between">
+                
+            </div>
+        </div>
+        <!-- container.// -->
 
         @stack('modals')
 
