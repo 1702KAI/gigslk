@@ -5,17 +5,46 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ url('redirects') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
+
+                @can('searchJobs')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link href="{{ route('freelancer.job.index') }}" :active="request()->routeIs('jobSearch.index')">
+                        {{ __('Search Gigs') }}
+                    </x-nav-link>
+                </div> 
+                @endcan
+
+
+                @if (Auth::check() && Auth::user()->role_id == 2) 
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('freelancer.job.index') }}" :active="request()->routeIs('jobSearch.index')">
+                        {{ __('Search Gigs') }}
+                    </x-nav-link>
+                </div> 
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('freelancer.manageBids') }}" :active="request()->routeIs('freelancer.manageBids')">
+                        {{ __('Manage Bids') }}
                     </x-nav-link>
                 </div>
+                @elseif (Auth::check() && Auth::user()->role_id == 3) 
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('employer.job.index') }}" :active="request()->routeIs('jobs.index')">
+                        {{ __('Manage Listings') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('employer.manageBids') }}" :active="request()->routeIs('jobs.index')">
+                        {{ __('Manage Bids') }}
+                    </x-nav-link>
+                </div>
+                @endif
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
