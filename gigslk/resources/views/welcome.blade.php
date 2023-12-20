@@ -202,65 +202,6 @@
         </div>
     </div>
 
-    <!-- Sliding content with navigation -->
-    <div class="swiper-container mx-auto max-w-4xl py-20 sm:py-38 lg:py-46">
-        <h2 class="text-xl">The latest freelance work!</h2>
-        <h1 class="text-4xl font-bold mb-2 text-black mb-10">RECENTLY POSTED WORK</h1>
-        <div class="swiper-wrapper">
-            <!-- Slide 1 -->
-            <div
-                class="swiper-slide flex flex-col items-center justify-center border rounded-lg p-6 mr-10 shadow-md max-w-xs">
-                <img src="images/slide-image-01.png" alt="Image 1" class="mx-auto">
-                <h2 class="text-center text-4xl font-bold mt-2 text-black mb-5">Logo Design</h2>
-                <p class="text-center text-lg mb-3">Need a professional logo with writing underneath for our jewellery
-                    company</p>
-                <h3 class="text-center text-lg mb-2">Highest bid $500</h3>
-                <h3 class="text-center text-lg text-blue-500 underline">Apply now</h3>
-            </div>
-            <!-- Slide 2 -->
-            <div
-                class="swiper-slide flex flex-col items-center justify-center border rounded-lg p-6 mr-10 shadow-md max-w-xs">
-                <img src="images/slide-image-01.png" alt="Image 1" class="mx-auto">
-                <h2 class="text-center text-4xl font-bold mt-2 text-black mb-5">Logo Design</h2>
-                <p class="text-center text-lg mb-3">Need a professional logo with writing underneath for our jewellery
-                    company</p>
-                <h3 class="text-center text-lg mb-2">Highest bid $500</h3>
-                <h3 class="text-center text-lg text-blue-500 underline">Apply now</h3>
-            </div>
-            <!-- Slide 3 -->
-            <div
-                class="swiper-slide flex flex-col items-center justify-center border rounded-lg p-6 mr-10 shadow-md max-w-xs overflow-hidden">
-                <img src="images/slide-image-01.png" alt="Image 1" class="mx-auto">
-                <h2 class="text-center text-4xl font-bold mt-2 text-black mb-5">Logo Design</h2>
-                <p class="text-center text-lg mb-3">Need a professional logo with writing underneath for our jewellery
-                    company</p>
-                <h3 class="text-center text-lg mb-2">Highest bid $500</h3>
-                <h3 class="text-center text-lg text-blue-500 underline">Apply now</h3>
-            </div>
-            <!-- Slide 4 -->
-            <div
-                class="swiper-slide flex flex-col items-center justify-center border rounded-lg p-6 mr-10 shadow-md max-w-xs">
-                <img src="images/slide-image-01.png" alt="Image 1" class="mx-auto">
-                <h2 class="text-center text-4xl font-bold mt-2 text-black mb-5">Logo Design</h2>
-                <p class="text-center text-lg mb-3">Need a professional logo with writing underneath for our jewellery
-                    company</p>
-                <h3 class="text-center text-lg mb-2">Highest bid $500</h3>
-                <h3 class="text-center text-lg text-blue-500 underline">Apply now</h3>
-            </div>
-            <!-- Slide 5 -->
-            <div
-                class="swiper-slide flex flex-col items-center justify-center border rounded-lg p-6 mr-10 shadow-md max-w-xs">
-                <img src="images/slide-image-01.png" alt="Image 1" class="mx-auto">
-                <h2 class="text-center text-4xl font-bold mt-2 text-black mb-5">Logo Design</h2>
-                <p class="text-center text-lg mb-3">Need a professional logo with writing underneath for our jewellery
-                    company</p>
-                <h3 class="text-center text-lg mb-2">Highest bid $500</h3>
-                <h3 class="text-center text-lg text-blue-500 underline">Apply now</h3>
-            </div>
-
-        </div>
-    </div>
-
     <!-- Newsletter Section -->
     <div class="bg-green-100 mt-20">
         <div class="mx-auto max-w-4xl py-20 sm:py-38 lg:py-46 text-white flex items-center justify-center">
