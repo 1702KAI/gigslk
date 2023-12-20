@@ -31,6 +31,11 @@ class User extends Authenticatable
         'address',
         'job_title',
         'company_name',
+        'mobile_number',
+        'hourly_rate',
+        'tags',
+        'bio'
+
     ];
 
     /**
