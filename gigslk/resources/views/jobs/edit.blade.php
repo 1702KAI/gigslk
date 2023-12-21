@@ -22,7 +22,7 @@
                 <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
 
-                <form action="{{ route('jobs.update', $job->id) }}" method="POST">
+                <form action="{{ route('employer.job.update', $job->id) }}" method="POST">
                     @csrf
                     @method('PUT')
 

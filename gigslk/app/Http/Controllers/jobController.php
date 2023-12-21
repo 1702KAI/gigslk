@@ -94,7 +94,7 @@ public function store(Request $request)
 
         $job->update($request->all());
 
-        return redirect()->route('jobs.index')->with('success', 'Job listing updated successfully');
+        return redirect()->route('employer.job.index')->with('success', 'Job listing updated successfully');
     }
 
 
