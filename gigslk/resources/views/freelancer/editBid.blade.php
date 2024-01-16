@@ -39,6 +39,17 @@
                         <input type="text" name="portfolio" id="portfolio" class="form-control" value="{{ $bid->portfolio }}">
                     </div>
 
+                    {{-- <!-- Add a form field for bid status with dropdown -->
+                    <div class="form-group">
+                        <label for="status">Status:</label>
+                        <select class="form-control" id="status" name="status">
+                            <option value="active" {{ $bid->status === 'active' ? 'selected' : '' }}>Active</option>
+                            <option value="inactive" {{ $bid->status === 'inactive' ? 'selected' : '' }}>Inactive</option>
+                            <option value="in-progress" {{ $bid->status === 'in-progress' ? 'selected' : '' }}>In Progress</option>
+                            <option value="completed" {{ $bid->status === 'completed' ? 'selected' : '' }}>Completed</option>
+                        </select>
+                    </div> --}}
+
                     <!-- Add more form fields for bid details as needed -->
 
                     <div class="mt-4">

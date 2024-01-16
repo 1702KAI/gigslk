@@ -15,12 +15,14 @@ class jobController extends Controller
     {
         // Get the authenticated user
         $user = Auth::user();
-    
-        // Retrieve jobs associated with the authenticated user
+        
+        // Retrieve all jobs associated with the authenticated user
         $jobs = $user->jobs;
     
         return view('jobs.index', compact('jobs'));
     }
+    
+    
 
     /**
      * Show the form for creating a new resource.
@@ -58,6 +60,7 @@ public function store(Request $request)
             'role_id' => $user->role_id,
             'user_id' => $user->id, // Add user_id
             'status' => 'active',
+            'show' => $request->input('status') === 'active', // Set 'show' based on status
             // Add more fields as needed
         ]);
 
@@ -89,7 +92,6 @@ public function store(Request $request)
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            // Add more validation rules as needed
         ]);
 
         $job->update($request->all());
@@ -103,12 +105,39 @@ public function store(Request $request)
         $request->validate([
             'status' => 'required|in:active,inactive,in-progress,completed',
         ]);
-
+    
         $job = Job::findOrFail($id);
-        $job->update(['status' => $request->input('status')]);
-
+    
+        // Determine 'show' based on the new status
+        $show = false;
+    
+        switch ($request->input('status')) {
+            case 'active':
+                $show = true;
+                break;
+            case 'inactive':
+                $show = false;
+                break;
+            case 'in-progress':
+                // Add additional conditions if needed
+                $show = false;
+                break;
+            case 'completed':
+                // Add additional conditions if needed
+                $show = false;
+                break;
+            // Add more cases as needed
+        }
+    
+        $job->update([
+            'status' => $request->input('status'),
+            'show' => $show,
+        ]);
+    
         return redirect()->route('employer.job.show', $job->id)->with('success', 'Job status updated successfully');
     }
+    
+
 
     /**
      * Remove the specified resource from storage.

@@ -33,15 +33,22 @@
                 <!-- Display list of freelancers who bid on the job -->
                 <h4 class="mb-3">Freelancers' Proposals</h4>
 
-                @forelse ($bids as $bid)
+                @forelse ($activeBids as $bid)
                     <div class="list-group">
                         <div class="list-group-item">
                             <h5 class="mb-1">{{ optional($bid->freelancer)->name }}</h5>
                             <p class="mb-1">{{ $bid->proposal }}</p>
                             <p > Previously completed this kind of project? {{$bid->portfolio}}</p>
                             <br>
-                            <a href="" class="btn btn-primary mt-3">Accept</a>
-                            <a href="" class="btn btn-primary mt-3">Decline</a>
+                            <form method="POST" action="{{ route('employer.acceptBid', ['bid' => $bid->id]) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary mt-3">Accept</button>
+                            </form>
+                            
+                            <form method="POST" action="{{ route('employer.declineBid', ['bid' => $bid->id]) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary mt-3">Decline</button>
+                            </form>     
 
                         </div>
                     </div>

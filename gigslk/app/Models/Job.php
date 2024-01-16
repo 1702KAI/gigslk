@@ -24,6 +24,7 @@ class Job extends Model
         'user_email',
         'role_id',
         'status',
+        'show',
         // Add more attributes as needed
     ];
 

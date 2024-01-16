@@ -62,6 +62,10 @@ Route::group([
  // Route for editing a bid
  Route::get('bids/{bidId}/edit', [EmployerController::class, 'editBid'])
      ->name('editJob');
+
+Route::post('accept-bid/{bid}', [EmployerController::class, 'acceptBid'])->name('acceptBid');
+
+Route::post('decline-bid/{bid}', [EmployerController::class, 'declineBid'])->name('declineBid');
 });
 
 
@@ -70,6 +74,8 @@ Route::group([
     'as' => 'freelancer.',
 ], function () {
     Route::resource('job', \App\Http\Controllers\jobSearchController::class);
+
+    Route::resource('myProjects', \App\Http\Controllers\FreelancerProjectsController::class);
     
     // Add a route for the BidController
     Route::post('jobs/{job}/bids', [\App\Http\Controllers\BidController::class, 'store'])
@@ -90,6 +96,8 @@ Route::group([
 
     Route::get('manage-bids', [\App\Http\Controllers\FreelancerController::class, 'manageBids'])
         ->name('manageBids');
+    
+
 });
 
 

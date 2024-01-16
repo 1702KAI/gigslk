@@ -19,11 +19,10 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="mt-2 mb-4">Bid Listings</h2>
+                <h2 class="mt-2 mb-4">Active Bid Listings</h2>
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
-
 
                 <table class="table table-bordered table-hover">
                     <thead class="thead-dark">
@@ -35,24 +34,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($totalBidsByJob as $jobId => $totalBids)
+                        @forelse($totalActiveBidsByJob as $jobId => $totalActiveBids)
                             <tr>
-                                <td>{{ $bids->where('job_id', $jobId)->first()->job->title }}</td>
-                                <td>{{ $totalBids }}</td>
+                                <td>{{ $activeBids->where('job_id', $jobId)->first()->job->title }}</td>
+                                <td>{{ $totalActiveBids }}</td>
                                 <!-- Add more bid details as needed -->
                                 <td>
                                     <!-- Add action buttons, e.g., view and edit bid --> 
-                                    {{-- {{dd($jobId)}}                                        --}}
                                     <a href="{{ route('employer.viewJob', ['jobId' => $jobId]) }}" class="btn btn-info btn-sm">View</a>
-
-                                    {{-- <a href="{{ route('employer.viewJob', ['bidId' => $bids->where('job_id', $jobId)->first()->id]) }}" class="btn btn-info btn-sm">View</a> --}}
-                                    {{-- {{dd($bids->where('job_id', $jobId)->first()->id)}} --}}
-                                    {{-- <a href="{{ route('employer.editJob', ['bidId' => $bids->where('job_id', $jobId)->first()->id]) }}" class="btn btn-warning btn-sm">Edit</a> --}}
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="3">No jobs found</td>
+                                <td colspan="3">No active bids found</td>
                             </tr>
                         @endforelse
                     </tbody>

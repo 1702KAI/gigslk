@@ -32,6 +32,12 @@
                         {{ __('Manage Bids') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('freelancer.myProjects.index') }}" :active="request()->routeIs('freelancer.manageProjects.index')">
+                        {{ __('My Projects') }}
+                    </x-nav-link>
+                </div>
+                
                 @elseif (Auth::check() && Auth::user()->role_id == 3) 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('employer.job.index') }}" :active="request()->routeIs('jobs.index')">
@@ -41,6 +47,11 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('employer.manageBids') }}" :active="request()->routeIs('jobs.index')">
                         {{ __('Manage Bids') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('freelancer.manageBids') }}" :active="request()->routeIs('freelancer.manageBids')">
+                        {{ __('Manage Projects') }}
                     </x-nav-link>
                 </div>
                 @endif

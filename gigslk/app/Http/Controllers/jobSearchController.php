@@ -17,20 +17,21 @@ class jobSearchController extends Controller
     //     // dd($jobs);
     //     return view('jobSearch.index', compact('jobs'));
     // }
-
+        
     public function index(Request $request)
     {
         $query = $request->input('q'); // Get the search query from the request
-
-        // Retrieve jobs with optional keyword search
+    
+        // Retrieve jobs with optional keyword search and show is true
         $jobs = Job::when($query, function ($queryBuilder) use ($query) {
             $queryBuilder->where('skills', 'like', '%' . $query . '%');
-        })->get();
-
-        // dd($jobs);
-
+        })
+        ->where('show', true) // Exclude jobs with show set to false
+        ->get();
+    
         return view('jobSearch.index', compact('jobs'));
     }
+    
 
     public function show(Job $job)
     {

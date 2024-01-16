@@ -1,26 +1,26 @@
 <?php
 
-// app/Models/Bid.php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bid extends Model
+class Project extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'job_id',
         'freelancer_id',
-        'proposal',
-        'portfolio',
+        'bid_proposal',
+        'freelancer_portfolio',
+        'project_owner',
+        'budget',
+        'timeline',
         'status',
-        
-        // Add more bid fields as needed
     ];
 
+    // Define relationships
     public function job()
     {
         return $this->belongsTo(Job::class);
@@ -28,11 +28,11 @@ class Bid extends Model
 
     public function freelancer()
     {
-        return $this->belongsTo(User::class, 'freelancer_id');
+        return $this->belongsTo(User::class, 'id');
     }
 
-    public static function getTotalBidsForJob($jobId)
+    public function employer()
     {
-        return self::where('job_id', $jobId)->distinct('freelancer_id')->count('freelancer_id');
+        return $this->belongsTo(User::class, 'id');
     }
 }
