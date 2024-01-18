@@ -4,41 +4,38 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
-use App\Models\Bid;
+use App\Models\Job;
 use Auth;
 
-class FreelancerProjectsController extends Controller
+class EmployerProjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // Fetch projects where the freelancer is involved
-        $ongoingProjects = Project::where('freelancer_id', Auth::id())
+        // Get the current user's ID
+        $userId = Auth::id();
+    
+        // Fetch jobs where the freelancer is involved
+        $jobIds = Job::where('user_id', $userId)->pluck('id');
+    
+        // Fetch projects where the job is associated with the current user
+        $ongoingProjects = Project::whereIn('job_id', $jobIds)
             ->where('status', 'in-progress')
             ->get();
-
-        $rejectedProjects = Bid::where('freelancer_id', Auth::id())
-            ->where('status', 'declined')
+    
+        $rejectedProjects = Project::whereIn('job_id', $jobIds)
+            ->where('status', 'active')
             ->get();
-
-        $completedProjects = Project::where('freelancer_id', Auth::id())
+    
+        $completedProjects = Project::whereIn('job_id', $jobIds)
             ->where('status', 'completed')
             ->get();
-
-        return view('freelancer.manageProjects.index', compact('ongoingProjects', 'rejectedProjects', 'completedProjects'));
+    
+        return view('employer.manageProjects.index', compact('ongoingProjects', 'rejectedProjects', 'completedProjects'));
     }
-
-    public function details($id)
-    {
-        // Fetch the project details based on the $id parameter
-        $project = Project::findOrFail($id);
-
-        // You can pass the $project variable to the view or perform additional logic
-
-        return view('freelancer.manageProjects.details', compact('project'));
-    }
+    
 
     /**
      * Show the form for creating a new resource.

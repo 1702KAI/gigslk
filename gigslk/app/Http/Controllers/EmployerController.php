@@ -24,6 +24,7 @@ class EmployerController extends Controller
         })
         ->with(['bids', 'bids.freelancer'])
         ->get();
+    
 
     // Flatten the active bids to get all bids associated with the employer's jobs
     $activeBids = $jobsWithActiveBids->pluck('bids')->flatten();
@@ -78,6 +79,8 @@ public function viewBid($jobId)
     
         // Update the statuses of other bids for the same job to 'declined'
         $jobBids = Bid::where('job_id', $bid->job_id)->where('id', '!=', $bid->id)->get();
+
+
     
         foreach ($jobBids as $otherBid) {
             $otherBid->update(['status' => 'declined']);
@@ -99,6 +102,8 @@ public function viewBid($jobId)
                 'status' => 'in-progress', // or any default status
             ]);
         }
+
+        $bid->job->update(['show' => false]);
     
         return redirect()->route('employer.viewJob', $bid->job->id)->with('success', 'Bid accepted successfully');
     }

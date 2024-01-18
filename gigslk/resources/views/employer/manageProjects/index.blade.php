@@ -16,11 +16,7 @@
                         <div class="p-6">
                             <h4 class="text-xl font-bold mb-2">{{ $project->job->title }}</h4>
                             <p class="text-gray-600">{{ $project->job->description }}</p>
-                            <p class="text-gray-500">Timeline: {{ $project->job->timeline }} days</p>
-                            <p class="text-gray-500">Deadline: {{ $project->deadline }}</p>
-                            <span class="inline-block bg-green-500 text-white px-2 py-1 rounded-full">Ongoing</span>
                             <!-- Add more project details as needed -->
-                            <a href="{{ route('freelancer.myProjects.details', ['id' => $project->id]) }}" class="text-blue-500">View Details</a>
                         </div>
                     </div>
                 @empty
@@ -36,7 +32,6 @@
                         <div class="p-6">
                             <h4 class="text-xl font-bold mb-2">{{ $project->job->title }}</h4>
                             <p class="text-gray-600">{{ $project->job->description }}</p>
-                            <span class="inline-block bg-red-500 text-white px-2 py-1 rounded-full">Rejected</span>
                             <!-- Add more project details as needed -->
                         </div>
                     </div>
@@ -53,11 +48,7 @@
                         <div class="p-6">
                             <h4 class="text-xl font-bold mb-2">{{ $project->job->title }}</h4>
                             <p class="text-gray-600">{{ $project->job->description }}</p>
-                            <p class="text-gray-500">Timeline: {{ $project->job->timeline }} days</p>
-                            <p class="text-gray-500">Deadline: {{ $project->deadline }}</p>
-                            <span class="inline-block bg-blue-500 text-white px-2 py-1 rounded-full">Completed</span>
                             <!-- Add more project details as needed -->
-                            <a href="{{ route('freelancer.myProject.details', ['id' => $project->id]) }}" class="text-blue-500">View Details</a>
                         </div>
                     </div>
                 @empty

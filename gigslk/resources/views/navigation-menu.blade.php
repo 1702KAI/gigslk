@@ -50,8 +50,8 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('freelancer.manageBids') }}" :active="request()->routeIs('freelancer.manageBids')">
-                        {{ __('Manage Projects') }}
+                    <x-nav-link href="{{ route('employer.myProjects.index') }}" :active="request()->routeIs('employer.manageProjects.index')">
+                        {{ __('My Projects') }}
                     </x-nav-link>
                 </div>
                 @endif
