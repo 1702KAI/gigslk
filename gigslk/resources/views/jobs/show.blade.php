@@ -42,9 +42,9 @@
                                     <option value="completed" {{ $job->status === 'completed' ? 'selected' : '' }}>Completed</option>
                                 </select>
                             </div>
-
                             <button type="submit" class="btn btn-primary">Update Status</button>
                         </form>
+                        <br>
 
                         <a href="{{ route('employer.job.edit', $job->id) }}" class="btn btn-primary">Edit Job</a>
                     </div>

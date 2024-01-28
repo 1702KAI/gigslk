@@ -40,6 +40,19 @@ class FreelancerProjectsController extends Controller
         return view('freelancer.manageProjects.details', compact('project'));
     }
 
+    public function sendMessage(Request $request, $projectId)
+    {
+        // Validate the request
+        $request->validate([
+            'message' => 'required|string',
+        ]);
+
+        // Broadcast the message
+        broadcast(new MessageSent($request->input('message')))->toOthers();
+
+        return redirect()->back();
+    }
+
     /**
      * Show the form for creating a new resource.
      */

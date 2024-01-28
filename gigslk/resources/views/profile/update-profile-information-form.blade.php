@@ -59,58 +59,6 @@
             <x-input-error for="name" class="mt-2" />
         </div>
 
-        <!-- Mobile number -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="mobile_number" value="{{ __('Mobile Number') }}" />
-            <x-input id="mobile_number" type="text" class="mt-1 block w-full" wire:model="state.mobile_number" required autocomplete="mobile_number" />
-            <x-input-error for="mobile_number" class="mt-2" />
-        </div>
-
-        <!-- Address -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="address" value="{{ __('Address') }}" />
-            <x-input id="address" type="text" class="mt-1 block w-full" wire:model="state.address" required autocomplete="address" />
-            <x-input-error for="address" class="mt-2" />
-        </div>
-
-        @if (Auth::user()->role_id == 2)
-
-        <!-- Bio -->
-        <div class="col-span-6 sm:col-span-4">
-            <label for="bio" class="block text-sm font-medium text-gray-700">{{ __('Bio') }}</label>
-            <textarea id="bio" name="bio" class="mt-1 block w-full form-input rounded-md shadow-sm" wire:model="state.bio" required autocomplete="bio"></textarea>
-            <x-input-error for="bio" class="mt-2" />
-        </div>
-
-        <!-- Hourly Rate -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="hourly_rate" value="{{ __('Hourly Rate') }}" />
-            <x-input id="hourly_rate" type="text" class="mt-1 block w-full" wire:model="state.hourly_rate" required autocomplete="hourly_rate" />
-            <x-input-error for="hourly_rate" class="mt-2" />
-        </div>
-
-        <!-- Tags -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="tags" value="{{ __('Tags') }}" />
-            <x-input id="tags" type="text" class="mt-1 block w-full" wire:model="state.tags" required autocomplete="tags" />
-            <x-input-error for="tags" class="mt-2" />
-        </div>
-        @elseif (Auth::user()->role_id == 3)
-         <!-- Company Name -->
-         <div class="col-span-6 sm:col-span-4">
-            <x-label for="company_name" value="{{ __('Company Name') }}" />
-            <x-input id="company_name" type="text" class="mt-1 block w-full" wire:model="state.company_name" required autocomplete="tags" />
-            <x-input-error for="ccompany_namey" class="mt-2" />
-        </div>
-        <!-- Company Bio -->
-        <div class="col-span-6 sm:col-span-4">
-            <label for="bio" class="block text-sm font-medium text-gray-700">{{ __('Company Bio') }}</label>
-            <textarea id="bio" name="bio" class="mt-1 block w-full form-input rounded-md shadow-sm" wire:model="state.bio" required autocomplete="bio"></textarea>
-            <x-input-error for="bio" class="mt-2" />
-        </div>
-        @endif
-
-
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-label for="email" value="{{ __('Email') }}" />
@@ -133,8 +81,6 @@
                 @endif
             @endif
         </div>
-
-        
     </x-slot>
 
     <x-slot name="actions">

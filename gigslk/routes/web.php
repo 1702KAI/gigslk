@@ -9,6 +9,7 @@ use App\Http\Controllers\EmployerProjectsController;
 use App\Http\Controllers\FreelancerController;
 use App\Http\Controllers\jobSearchController;
 use App\Http\Controllers\FreelancerProjectsController;
+use App\Http\Controllers\PusherController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -44,4 +45,7 @@ Route::group(['prefix' => 'freelancer', 'as' => 'freelancer.'], function () {
     Route::put('bids/{bid}', [FreelancerController::class, 'updateBid'])->name('bids.update');
     Route::delete('bids/{bid}', [FreelancerController::class, 'destroyBid'])->name('bids.destroy');
     Route::get('manage-bids', [FreelancerController::class, 'manageBids'])->name('manageBids');
+    Route::get('message',[PusherController::class,'index'])->name('message');
+    Route::post('message/broadcast',[PusherController::class,'broadcast'])->name('broadcast');
+    Route::post('message/recieve',[PusherController::class,'recieve'])->name('recieve');
 });
